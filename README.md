@@ -15,8 +15,8 @@ Plateforme e-commerce multi-vendeur web responsive permettant aux utilisateurs d
 ### Clients (après inscription)
 
 - Création de compte
-- Ajout au panier et commandes
-- Paiement via CinetPay/Flutterwave ou WhatsApp
+- Peux passer une commande
+- Paiement via Stripe et redirection vers WhatsApp pour livraison
 
 ### Commerçants (après abonnement)
 
@@ -39,7 +39,7 @@ Plateforme e-commerce multi-vendeur web responsive permettant aux utilisateurs d
 
 ### Paiements
 
-- CinetPay / Flutterwave
+- Stripe
 - Orange Money, Mobile Money, Visa
 - Redirection WhatsApp
 
@@ -50,7 +50,7 @@ Plateforme e-commerce multi-vendeur web responsive permettant aux utilisateurs d
 
 ## 📱 Design
 
-Interface responsive avec support mode clair/sombre, couleur principale orange.
+Interface responsive avec support mode clair/sombre, couleur principale Jaune.
 
 ## 💰 Budget
 

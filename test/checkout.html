@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commande - Mervason Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FFD700",
+              "primary-dark": "#E6C200",
+              "accent-blue": "#3B82F6",
+              "accent-blue-dark": "#60A5FA",
+              surface: "#F8F9FA",
+              "surface-secondary": "#F5F5F5",
+              "surface-dark": "#1F1F1F",
+              "surface-secondary-dark": "#2A2A2A",
+              success: "#10B981",
+              warning: "#F59E0B",
+              error: "#EF4444",
+              "accent-yellow": "#FCD34D",
+              "accent-cream": "#FEF7ED",
+              "accent-cream-dark": "#292524",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "Poppins",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Arial",
+                "sans-serif",
+              ],
+            },
+            borderRadius: {
+              sm: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "24px",
+              pill: "999px",
+            },
+            spacing: {
+              1: "4px",
+              2: "8px",
+              3: "12px",
+              4: "16px",
+              5: "20px",
+              6: "24px",
+              8: "32px",
+              10: "40px",
+              12: "48px",
+              16: "64px",
+            },
+            boxShadow: {
+              "level-1":
+                "0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04)",
+              "level-2":
+                "0 2px 6px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.06)",
+              "level-3":
+                "0 6px 16px rgba(0,0,0,0.10), 0 12px 24px rgba(0,0,0,0.08)",
+              dark: "0 8px 24px rgba(0,0,0,0.08)",
+              "dark-heavy": "0 12px 28px rgba(0,0,0,0.45)",
+            },
+            animation: {
+              "fade-in": "fadeIn 200ms cubic-bezier(0.2, 0.0, 0, 1)",
+              "slide-up": "slideUp 240ms cubic-bezier(0, 0.7, 0.3, 1)",
+              "bounce-in": "bounceIn 480ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(100%)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              bounceIn: {
+                "0%": { transform: "scale(0.3)", opacity: "0" },
+                "50%": { transform: "scale(1.05)" },
+                "70%": { transform: "scale(0.9)" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="h-full bg-gray-50 dark:bg-gray-900 font-sans">
+    <!-- Header (simplified) -->
+    <header
+      class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center">
+            <span class="text-2xl font-bold text-primary">Mervason</span>
+          </a>
+          <div class="text-lg font-semibold text-gray-900 dark:text-white">
+            Commande
+          </div>
+          <div class="flex items-center space-x-2">
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-gray-500"
+            >
+              <span class="dark:hidden">🌙</span>
+              <span class="hidden dark:inline">☀️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <!-- Progress Steps -->
+      <div class="mb-8">
+        <div class="flex items-center justify-center">
+          <div class="flex items-center">
+            <!-- Step 1 -->
+            <div class="flex items-center">
+              <div
+                id="step1-circle"
+                class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-medium"
+              >
+                1
+              </div>
+              <span
+                id="step1-label"
+                class="ml-2 text-sm font-medium text-primary"
+                >Adresse</span
+              >
+            </div>
+
+            <!-- Connector -->
+            <div
+              id="connector1"
+              class="flex-1 h-0.5 bg-gray-300 dark:bg-gray-600 mx-4 w-16"
+            ></div>
+
+            <!-- Step 2 -->
+            <div class="flex items-center">
+              <div
+                id="step2-circle"
+                class="flex items-center justify-center w-8 h-8 bg-gray-300 dark:bg-gray-600 text-gray-500 rounded-full text-sm font-medium"
+              >
+                2
+              </div>
+              <span
+                id="step2-label"
+                class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                >Paiement</span
+              >
+            </div>
+
+            <!-- Connector -->
+            <div
+              id="connector2"
+              class="flex-1 h-0.5 bg-gray-300 dark:bg-gray-600 mx-4 w-16"
+            ></div>
+
+            <!-- Step 3 -->
+            <div class="flex items-center">
+              <div
+                id="step3-circle"
+                class="flex items-center justify-center w-8 h-8 bg-gray-300 dark:bg-gray-600 text-gray-500 rounded-full text-sm font-medium"
+              >
+                3
+              </div>
+              <span
+                id="step3-label"
+                class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                >Confirmation</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+        <!-- Main Form -->
+        <div class="lg:col-span-2">
+          <!-- Step 1: Address & Contact -->
+          <div
+            id="step1-content"
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6"
+          >
+            <h2
+              class="text-xl font-semibold text-gray-900 dark:text-white mb-6"
+            >
+              Informations de livraison
+            </h2>
+
+            <form id="addressForm" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="firstName"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="lastName"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Numéro de téléphone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  placeholder="+237 6XX XXX XXX"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address"
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Adresse complète
+                </label>
+                <textarea
+                  id="address"
+                  name="address"
+                  rows="3"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  placeholder="Rue, quartier, ville..."
+                ></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="city"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Ville
+                  </label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="region"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Région
+                  </label>
+                  <select
+                    id="region"
+                    name="region"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+                  >
+                    <option value="">Sélectionner...</option>
+                    <option value="centre">Centre</option>
+                    <option value="littoral">Littoral</option>
+                    <option value="ouest">Ouest</option>
+                    <option value="nord">Nord</option>
+                    <option value="extreme-nord">Extrême-Nord</option>
+                    <option value="adamaoua">Adamaoua</option>
+                    <option value="est">Est</option>
+                    <option value="nord-ouest">Nord-Ouest</option>
+                    <option value="sud">Sud</option>
+                    <option value="sud-ouest">Sud-Ouest</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+
+            <div class="mt-6 flex justify-end">
+              <button
+                onclick="nextStep()"
+                class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg font-medium transition-colors"
+              >
+                Continuer
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Payment Method -->
+          <div
+            id="step2-content"
+            class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6"
+          >
+            <h2
+              class="text-xl font-semibold text-gray-900 dark:text-white mb-6"
+            >
+              Mode de paiement
+            </h2>
+
+            <div class="space-y-4">
+              <!-- Visa Card -->
+              <label
+                class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-primary transition-colors"
+              >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="visa"
+                  class="h-4 w-4 text-primary focus:ring-primary"
+                />
+                <div class="ml-3 flex items-center">
+                  <div
+                    class="w-12 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xs"
+                  >
+                    VISA
+                  </div>
+                  <div class="ml-3">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Carte Visa
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Paiement sécurisé par carte bancaire
+                    </p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- Orange Money -->
+              <label
+                class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-primary transition-colors"
+              >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="orange-money"
+                  class="h-4 w-4 text-primary focus:ring-primary"
+                />
+                <div class="ml-3 flex items-center">
+                  <div
+                    class="w-12 h-8 bg-orange-500 rounded flex items-center justify-center text-white font-bold text-xs"
+                  >
+                    OM
+                  </div>
+                  <div class="ml-3">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Orange Money
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Paiement mobile sécurisé
+                    </p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- MTN Mobile Money -->
+              <label
+                class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-primary transition-colors"
+              >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="mtn-momo"
+                  class="h-4 w-4 text-primary focus:ring-primary"
+                />
+                <div class="ml-3 flex items-center">
+                  <div
+                    class="w-12 h-8 bg-yellow-500 rounded flex items-center justify-center text-white font-bold text-xs"
+                  >
+                    MTN
+                  </div>
+                  <div class="ml-3">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      MTN Mobile Money
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Paiement mobile MTN
+                    </p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- WhatsApp -->
+              <label
+                class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-primary transition-colors"
+              >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="whatsapp"
+                  class="h-4 w-4 text-primary focus:ring-primary"
+                />
+                <div class="ml-3 flex items-center">
+                  <div
+                    class="w-12 h-8 bg-green-500 rounded flex items-center justify-center text-white"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"
+                      />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      WhatsApp
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Commander via WhatsApp
+                    </p>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="mt-6 flex justify-between">
+              <button
+                onclick="previousStep()"
+                class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                Retour
+              </button>
+              <button
+                onclick="nextStep()"
+                class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg font-medium transition-colors"
+              >
+                Continuer
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Confirmation -->
+          <div
+            id="step3-content"
+            class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6"
+          >
+            <h2
+              class="text-xl font-semibold text-gray-900 dark:text-white mb-6"
+            >
+              Confirmation de commande
+            </h2>
+
+            <!-- Order Summary -->
+            <div class="space-y-4 mb-6">
+              <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                <h3 class="font-medium text-gray-900 dark:text-white mb-2">
+                  Adresse de livraison
+                </h3>
+                <div
+                  id="confirmAddress"
+                  class="text-sm text-gray-600 dark:text-gray-300"
+                ></div>
+              </div>
+
+              <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                <h3 class="font-medium text-gray-900 dark:text-white mb-2">
+                  Mode de paiement
+                </h3>
+                <div
+                  id="confirmPayment"
+                  class="text-sm text-gray-600 dark:text-gray-300"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex justify-between">
+              <button
+                onclick="previousStep()"
+                class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                Retour
+              </button>
+              <button
+                onclick="submitOrder()"
+                id="submitOrderBtn"
+                class="bg-primary hover:bg-primary-dark text-white px-8 py-2 rounded-lg font-medium transition-colors"
+              >
+                <span id="submitText">Confirmer la commande</span>
+                <svg
+                  id="submitSpinner"
+                  class="hidden animate-spin ml-2 h-4 w-4 text-white inline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary Sidebar -->
+        <div class="lg:col-span-1">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sticky top-8"
+          >
+            <h3
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+            >
+              Récapitulatif
+            </h3>
+
+            <!-- Product Item -->
+            <div class="flex items-center space-x-4 mb-4">
+              <img
+                src="https://via.placeholder.com/80x80/FFD700/333333?text=Produit"
+                alt="Produit"
+                class="w-16 h-16 object-cover rounded-lg"
+              />
+              <div class="flex-1">
+                <h4 class="font-medium text-gray-900 dark:text-white text-sm">
+                  Smartphone XYZ Pro
+                </h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Quantité: 1
+                </p>
+              </div>
+              <div class="text-right">
+                <p class="font-semibold text-gray-900 dark:text-white">
+                  299,000 FCFA
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="border-t border-gray-200 dark:border-gray-600 pt-4 space-y-2"
+            >
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600 dark:text-gray-300">Sous-total</span>
+                <span class="text-gray-900 dark:text-white">299,000 FCFA</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600 dark:text-gray-300">Livraison</span>
+                <span class="text-green-600 dark:text-green-400">Gratuite</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600 dark:text-gray-300">Taxes</span>
+                <span class="text-gray-900 dark:text-white">0 FCFA</span>
+              </div>
+              <div class="border-t border-gray-200 dark:border-gray-600 pt-2">
+                <div class="flex justify-between">
+                  <span
+                    class="text-lg font-semibold text-gray-900 dark:text-white"
+                    >Total</span
+                  >
+                  <span
+                    class="text-lg font-semibold text-gray-900 dark:text-white"
+                    >299,000 FCFA</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Promo Code -->
+            <div class="mt-6">
+              <div class="flex space-x-2">
+                <input
+                  type="text"
+                  placeholder="Code promo"
+                  class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                <button
+                  class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  Appliquer
+                </button>
+              </div>
+            </div>
+
+            <!-- Security Badge -->
+            <div class="mt-6 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <div class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-600 dark:text-green-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span
+                  class="text-sm text-green-700 dark:text-green-300 font-medium"
+                  >Paiement sécurisé</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts/checkout.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
